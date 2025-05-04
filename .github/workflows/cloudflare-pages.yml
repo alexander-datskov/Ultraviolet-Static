@@ -1,1 +1,33 @@
+name: Deploy Ultraviolet TN to Cloudflare Pages
 
+on:
+  push:
+    branches: [ "main" ] # Or your production branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Cloudflare Pages
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # If you have any build steps (e.g., generating assets, optimizing)
+      # add them here. For a purely static Ultraviolet setup, you might not need any.
+      # Example for installing dependencies if you have a package.json:
+      # - name: Install dependencies
+      #   run: npm install
+
+      # Example for a build command if needed:
+      # - name: Build website
+      #   run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: d5fe3ec186867bc6659d2dde6ec419c9
+          projectName: ultraviolet-cloudflare-deploy # Replace with your Cloudflare Pages project name
+          directory: ./ # Adjust this path to where your static assets are
+          branch: main # Or your production branch name

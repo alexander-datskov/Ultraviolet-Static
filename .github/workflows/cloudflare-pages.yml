@@ -29,5 +29,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: d5fe3ec186867bc6659d2dde6ec419c9
           projectName: ultraviolet-cloudflare-deploy # Replace with your Cloudflare Pages project name
-          directory: ./ # Adjust this path to where your static assets are
+          directory: ./public # Adjust this path to where your static assets are
           branch: main # Or your production branch name
